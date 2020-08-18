@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/error.css">
+    <title>404</title>
+</head>
+<body>
+<div class="error-body">
+    <img src="images/error-404.svg" class="error-img" alt="svg">
+    <p class="error-title">404</p>
+
+    <p class="error-text">
+        Sahifa topilmadi
+    </p>
+
+    <a href="#" class="error-button js-touch-effect">Bosh menyuga qaytish</a>
+
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    var $window = window;
+
+    //white
+    function buttonTouchEffect(){
+        var $buttonTouchEffect = $('.js-touch-effect');
+
+//button押した時の挙動
+        $buttonTouchEffect.on('click',function(e){
+            e.preventDefault();
+
+            $(this).append('<span></span>');
+            var $span = $(this).find('span'),
+                offSet = $(this).offset(),
+                offSetY = event.pageY-offSet.top,
+                offSetX = event.pageX-offSet.left;
+
+            console.log(offSetY,offSetX)
+            $span.css({
+                top:offSetY,
+                left:offSetX
+            });
+
+            $window.setTimeout(function(){
+                $span.remove();
+            },1800);
+
+        });
+    }
+
+    buttonTouchEffect();
+
+</script>
+</body>
+</html>
